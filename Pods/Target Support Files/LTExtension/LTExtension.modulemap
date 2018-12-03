@@ -1,0 +1,6 @@
+framework module LTExtension {
+  umbrella header "LTExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}
