@@ -10,9 +10,15 @@
 		102F5AAA5E2F35A1B93A6F49 /* Pods_LTNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD166D9C4C9B2AB7704E142A /* Pods_LTNetwork.framework */; };
 		32F53261B3F8C5C6381D5C41 /* Pods_LTNetworkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0488B5137B45A01CC5D28BB8 /* Pods_LTNetworkUITests.framework */; };
 		4CBE6DAE678B42C586F3831F /* Pods_LTNetworkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0F882F2F65E481B6099D38 /* Pods_LTNetworkTests.framework */; };
-		A640CF8321B4CFEB00FB2837 /* LTBaseRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A640CF8221B4CFEB00FB2837 /* LTBaseRequestModel.swift */; };
-		A640CF8521B4DB3200FB2837 /* LTBaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A640CF8421B4DB3200FB2837 /* LTBaseTargetType.swift */; };
-		A640CF8721B5047500FB2837 /* LTBaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A640CF8621B5047500FB2837 /* LTBaseNetworkManager.swift */; };
+		A603839821B7A4BA00AD5C34 /* LTTestPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A603839721B7A4BA00AD5C34 /* LTTestPlugin.swift */; };
+		A603839A21B7AB8F00AD5C34 /* LTAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A603839921B7AB8F00AD5C34 /* LTAdapter.swift */; };
+		A603839D21B7DB4500AD5C34 /* LTCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A603839C21B7DB4500AD5C34 /* LTCodable.swift */; };
+		A607634221B679620098C013 /* LTPluginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607634121B679620098C013 /* LTPluginType.swift */; };
+		A607634421B67F990098C013 /* LTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607634321B67F990098C013 /* LTResponse.swift */; };
+		A607634721B68A120098C013 /* LTParsePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607634621B68A120098C013 /* LTParsePlugin.swift */; };
+		A640CF8321B4CFEB00FB2837 /* LTTargetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A640CF8221B4CFEB00FB2837 /* LTTargetModel.swift */; };
+		A640CF8521B4DB3200FB2837 /* LTTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A640CF8421B4DB3200FB2837 /* LTTargetType.swift */; };
+		A640CF8721B5047500FB2837 /* LTNetwokManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A640CF8621B5047500FB2837 /* LTNetwokManager.swift */; };
 		A6BFD7B221B1230A0048FCDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BFD7B121B1230A0048FCDC /* AppDelegate.swift */; };
 		A6BFD7B421B1230A0048FCDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BFD7B321B1230A0048FCDC /* ViewController.swift */; };
 		A6BFD7B721B1230A0048FCDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BFD7B521B1230A0048FCDC /* Main.storyboard */; };
@@ -48,9 +54,15 @@
 		5152F8D7D3B6E9DFAF4A5EBE /* Pods-LTNetworkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTNetworkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LTNetworkUITests/Pods-LTNetworkUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7C83CF779897FA5E9F952CDC /* Pods-LTNetworkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTNetworkUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LTNetworkUITests/Pods-LTNetworkUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A21EC17A97F61BA681E6A064 /* Pods-LTNetworkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTNetworkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LTNetworkTests/Pods-LTNetworkTests.release.xcconfig"; sourceTree = "<group>"; };
-		A640CF8221B4CFEB00FB2837 /* LTBaseRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTBaseRequestModel.swift; sourceTree = "<group>"; };
-		A640CF8421B4DB3200FB2837 /* LTBaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTBaseTargetType.swift; sourceTree = "<group>"; };
-		A640CF8621B5047500FB2837 /* LTBaseNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTBaseNetworkManager.swift; sourceTree = "<group>"; };
+		A603839721B7A4BA00AD5C34 /* LTTestPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTTestPlugin.swift; sourceTree = "<group>"; };
+		A603839921B7AB8F00AD5C34 /* LTAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTAdapter.swift; sourceTree = "<group>"; };
+		A603839C21B7DB4500AD5C34 /* LTCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTCodable.swift; sourceTree = "<group>"; };
+		A607634121B679620098C013 /* LTPluginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTPluginType.swift; sourceTree = "<group>"; };
+		A607634321B67F990098C013 /* LTResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTResponse.swift; sourceTree = "<group>"; };
+		A607634621B68A120098C013 /* LTParsePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTParsePlugin.swift; sourceTree = "<group>"; };
+		A640CF8221B4CFEB00FB2837 /* LTTargetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTTargetModel.swift; sourceTree = "<group>"; };
+		A640CF8421B4DB3200FB2837 /* LTTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTTargetType.swift; sourceTree = "<group>"; };
+		A640CF8621B5047500FB2837 /* LTNetwokManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTNetwokManager.swift; sourceTree = "<group>"; };
 		A6BFD7AE21B1230A0048FCDC /* LTNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LTNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BFD7B121B1230A0048FCDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6BFD7B321B1230A0048FCDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +122,15 @@
 				5152F8D7D3B6E9DFAF4A5EBE /* Pods-LTNetworkUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A607634521B6897A0098C013 /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				A607634621B68A120098C013 /* LTParsePlugin.swift */,
+				A603839721B7A4BA00AD5C34 /* LTTestPlugin.swift */,
+			);
+			path = Plugin;
 			sourceTree = "<group>";
 		};
 		A6BFD7A521B1230A0048FCDC = {
@@ -179,9 +200,14 @@
 		A6BFD7E421B1238F0048FCDC /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A640CF8221B4CFEB00FB2837 /* LTBaseRequestModel.swift */,
-				A640CF8421B4DB3200FB2837 /* LTBaseTargetType.swift */,
-				A640CF8621B5047500FB2837 /* LTBaseNetworkManager.swift */,
+				A607634521B6897A0098C013 /* Plugin */,
+				A640CF8221B4CFEB00FB2837 /* LTTargetModel.swift */,
+				A640CF8421B4DB3200FB2837 /* LTTargetType.swift */,
+				A640CF8621B5047500FB2837 /* LTNetwokManager.swift */,
+				A607634121B679620098C013 /* LTPluginType.swift */,
+				A607634321B67F990098C013 /* LTResponse.swift */,
+				A603839921B7AB8F00AD5C34 /* LTAdapter.swift */,
+				A603839C21B7DB4500AD5C34 /* LTCodable.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -413,11 +439,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6BFD7E121B123830048FCDC /* BaseTableViewController.swift in Sources */,
+				A607634421B67F990098C013 /* LTResponse.swift in Sources */,
 				A6BFD7B421B1230A0048FCDC /* ViewController.swift in Sources */,
-				A640CF8521B4DB3200FB2837 /* LTBaseTargetType.swift in Sources */,
-				A640CF8321B4CFEB00FB2837 /* LTBaseRequestModel.swift in Sources */,
-				A640CF8721B5047500FB2837 /* LTBaseNetworkManager.swift in Sources */,
+				A603839D21B7DB4500AD5C34 /* LTCodable.swift in Sources */,
+				A640CF8521B4DB3200FB2837 /* LTTargetType.swift in Sources */,
+				A640CF8321B4CFEB00FB2837 /* LTTargetModel.swift in Sources */,
+				A603839821B7A4BA00AD5C34 /* LTTestPlugin.swift in Sources */,
+				A640CF8721B5047500FB2837 /* LTNetwokManager.swift in Sources */,
+				A603839A21B7AB8F00AD5C34 /* LTAdapter.swift in Sources */,
 				A6BFD7E321B123890048FCDC /* RootViewController.swift in Sources */,
+				A607634221B679620098C013 /* LTPluginType.swift in Sources */,
+				A607634721B68A120098C013 /* LTParsePlugin.swift in Sources */,
 				A6BFD7B221B1230A0048FCDC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

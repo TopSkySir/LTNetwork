@@ -8,31 +8,24 @@
 
 import UIKit
 import Moya
+import Result
 
-public class LTBaseNetworkManager: NSObject {
+public class LTNetwokManager: NSObject {
 
     @discardableResult
-    class func send(_ model: LTBaseRequestModel) -> Cancellable? {
-        let request = LTBaseTargetType(model)
-        return send(request)
+    class func request(_ model: LTTargetModel) -> Cancellable? {
+        let target = LTTarget(model)
+        return request(target)
     }
 
-
     @discardableResult
-    class func send(_ request: LTBaseTargetType) -> Cancellable? {
-        let provider = createProvider(request)
-        let req = MultiTarget(request)
-        return provider.request(req, callbackQueue: DispatchQueue.global(), progress: { (response) in
-
-        }, completion: { (result) in
-            switch result {
-            case let .success(response):
-                let dict = try? JSONSerialization.jsonObject(with: response.data, options: .mutableContainers)
-                print(Thread.current)
-                print(dict)
-            case .failure(let error):
-                break
-            }
+    class func request(_ target: LTTarget) -> Cancellable? {
+        let provider = createProvider(target)
+        let resultTarget = MultiTarget(target)
+        return provider.request(resultTarget, callbackQueue: DispatchQueue.global(), progress: { [weak target] (response) in
+            perform(response, target: target)
+        }, completion: { [weak target] (result) in
+            perform(result, target: target)
         })
     }
 
@@ -44,8 +37,8 @@ public class LTBaseNetworkManager: NSObject {
                                                  requestClosure: createRequest,
                                                  stubClosure: createStub,
                                                  manager: createManager(target),
-                                                 plugins: createPlugins(),
-                                                 trackInflights: target.model.isTrack)
+                                                 plugins: createPlugins(target),
+                                                 trackInflights: target.model.trackInflights)
     }
 
     /**
@@ -63,7 +56,7 @@ public class LTBaseNetworkManager: NSObject {
      创建Stub
      */
     public class func createStub(_ target: MultiTarget) -> StubBehavior {
-        guard let result = target as? LTTargetType, result.model.isStub else {
+        guard let result = target.target as? LTTargetType, result.model.isStub else {
             return .never
         }
         return .delayed(seconds: 1)
@@ -93,28 +86,52 @@ public class LTBaseNetworkManager: NSObject {
         configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
         let manager = Manager(configuration: configuration)
         manager.startRequestsImmediately = false
+        manager.adapter = target.model.adapter
         return manager
     }
 
     /**
      创建插件
      */
-    public class func createPlugins() -> [PluginType] {
-        var plugins = [PluginType]()
-        /// 添加状态栏风火轮插件
-        let networkPlugin = NetworkActivityPlugin { (change, target)  -> () in
-            DispatchQueue.main.async {
-                switch(change){
-                case .began:
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-                case .ended:
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
-            }
-        }
-        plugins.append(networkPlugin)
-        return plugins
+    public class func createPlugins(_ target: LTTargetType) -> [PluginType] {
+        return target.model.plugins
     }
+
+
+    // MARK: - 插件回调
+
+    /**
+     progress回调
+     */
+    class func perform(_ response: ProgressResponse, target: LTTarget?) {
+        guard let target = target else {
+            return
+        }
+        target.model.plugins.forEach({ (item) in
+            item.progress(response)
+        })
+    }
+
+
+    /**
+     complete回调
+     */
+    class func perform(_ result: Result<Moya.Response, MoyaError>, target: LTTarget?) {
+        guard let target = target else {
+            return
+        }
+        var convertResult: Result<LTResponse, AnyError>
+        switch result {
+        case .success(let response):
+            let convertResponse = LTResponse(response)
+            convertResult = Result<LTResponse, AnyError>.success(convertResponse)
+        case .failure(let error):
+            let convertError = AnyError.init(error)
+            convertResult = Result<LTResponse, AnyError>.failure(convertError)
+        }
+        let _ = target.model.plugins.reduce(convertResult) { $1.complete($0, target: target)}
+    }
+
 
     // MARK: - 辅助函数
 
@@ -139,5 +156,6 @@ public class LTBaseNetworkManager: NSObject {
          */
         return URL(target: target).absoluteString
     }
+
 
 }

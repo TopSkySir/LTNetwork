@@ -8,6 +8,25 @@
 
 import UIKit
 
+class A: LTCodable {
+    var name: String = ""
+    var address: [B]?
+    var item: B?
+    var item2: B?
+
+    enum CodingKeys: String, CodingKey{
+        case name
+        case address
+        case item
+        case item2 = "item3"
+    }
+}
+
+class B: Codable {
+    var name: String?
+}
+
+
 
 class RootViewController: BaseTableViewController {
 
@@ -31,22 +50,30 @@ class RootViewController: BaseTableViewController {
     override func add() {
 
         addAction(title: "网络请求") {
-            let model = LTBaseRequestModel()
+            let model = LTTargetModel()
             model.interface = "http://news-at.zhihu.com/api/2/news/latest"
             model.method = .get
-            LTBaseNetworkManager.send(model)
+            model.defaultHeaders = ["A": "1"]
+            model.headers = ["B": "2"
+            ]
+            model.params = ["C": 3]
+            model.defaultParams = ["D": 4]
+            model.sampleData = try? JSONSerialization.data(withJSONObject: ["name": "BeiJing"], options: .prettyPrinted)
+            model.isStub = true
+            model.timeoutInterval = 5
+            LTNetwokManager.request(model)
         }
 
-        addAction(title: "系统风火轮---开") {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        addAction(title: "Codable") {
+            let dict: [String: Any] = ["name": "A", "address":[["name": "b1"],["name": "b2"]], "item": ["name": "b2"], "item3": ["name": "b3"]]
+            let model = A.decoder(dict)
+//            print(dict as NSDictionary)
+            print(model)
+
+            let dict2 = model?.encoderJson()
+            print(dict2 as! NSDictionary)
+
         }
-
-        addAction(title: "系统风火轮---关") {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        }
-
-
-
     }
 
     
