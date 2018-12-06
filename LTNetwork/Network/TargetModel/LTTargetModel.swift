@@ -10,7 +10,7 @@ import UIKit
 import Moya
 import Alamofire
 
-public class LTTargetModel: NSObject {
+open class LTTargetModel: NSObject {
 
     public typealias Method = Moya.Method
     public typealias ParameterEncoding = Moya.ParameterEncoding
@@ -19,34 +19,34 @@ public class LTTargetModel: NSObject {
     /**
      接口 设置之后 默认 baseURL+api拼接模式失效
      */
-    public var interface: String = ""
+    open var interface: String = ""
 
     /**
      接口基路径
      */
-    public var baseURL: String {
+    open var baseURL: String {
         return ""
     }
 
     /**
      api路径
      */
-    public var api: String = ""
+    open var api: String = ""
 
     /**
      请求方式
      */
-    public var method: Method = .get
+    open var method: Method = .get
 
     /**
      头部参数
      */
-    public var headers: [String: String]?
+    open var headers: [String: String]?
 
     /**
      默认头部参数， 基类可配置此选项
      */
-    public var defaultHeaders: [String: String]? {
+    open var defaultHeaders: [String: String]? {
         return nil
     }
 
@@ -80,8 +80,9 @@ public class LTTargetModel: NSObject {
     /**
      插件
      */
-    public var plugins: [LTPluginType] = [LTParsePlugin(), LTCompletePlugin()]
-
+    public var plugins: [LTPluginType] {
+        return [LTParsePlugin(), LTCompletePlugin()]
+    }
 
     /**
      适配器
