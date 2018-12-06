@@ -27,12 +27,12 @@ public class LTDownloadTargetModel: LTTargetModel {
     public var fileName: String?
 
 
-    override var defaultHeaders: [String : String]? {
+    override public var defaultHeaders: [String : String]? {
         return ["Content-Type": "text/plain"]
     }
 
 
-    override var task: LTTargetModel.Task {
+    override public var task: LTTargetModel.Task {
         var directoryURLs = FileManager.default.urls(for: directory, in: domain)
         let name = fileName
         return .downloadDestination({  (temporaryURL, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in

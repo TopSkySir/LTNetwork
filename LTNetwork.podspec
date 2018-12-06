@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   s.swift_version = "4.2"
 
 
-  s.source_files  = "LTNetwork/Network/*"
+  s.source_files  = "LTNetwork/Network/*", "LTNetwork/Network/**/*"
   s.dependency "Moya", "12.0.1"
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
