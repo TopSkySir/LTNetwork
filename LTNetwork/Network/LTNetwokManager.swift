@@ -10,16 +10,16 @@ import UIKit
 import Moya
 import Result
 
-public class LTNetwokManager: NSObject {
+open class LTNetwokManager: NSObject {
 
     @discardableResult
-    public class func request(_ model: LTTargetModel) -> Cancellable? {
+    open class func request(_ model: LTTargetModel) -> Cancellable? {
         let target = LTTarget(model)
         return request(target)
     }
 
     @discardableResult
-    public class func request(_ target: LTTarget) -> Cancellable? {
+    open class func request(_ target: LTTarget) -> Cancellable? {
         let provider = createProvider(target)
         let resultTarget = MultiTarget(target)
         return provider.request(resultTarget, callbackQueue: DispatchQueue.global(), progress: { [weak target] (response) in
@@ -32,7 +32,7 @@ public class LTNetwokManager: NSObject {
 
     // MARK: - 创建Provider
 
-    public class func createProvider(_ target: LTTargetType) -> MoyaProvider<MultiTarget> {
+    open class func createProvider(_ target: LTTargetType) -> MoyaProvider<MultiTarget> {
         return MoyaProvider<MultiTarget>(endpointClosure: createEndpoint,
                                                  requestClosure: createRequest,
                                                  stubClosure: createStub,
@@ -44,7 +44,7 @@ public class LTNetwokManager: NSObject {
     /**
      创建Endpoint
      */
-    public class func createEndpoint(_ target: MultiTarget) -> Endpoint {
+    open class func createEndpoint(_ target: MultiTarget) -> Endpoint {
         let realURL = url(target)
         return Endpoint(url: realURL, sampleResponseClosure: { () -> EndpointSampleResponse in
             return .networkResponse(200, target.sampleData)
@@ -55,7 +55,7 @@ public class LTNetwokManager: NSObject {
     /**
      创建Stub
      */
-    public class func createStub(_ target: MultiTarget) -> StubBehavior {
+    open class func createStub(_ target: MultiTarget) -> StubBehavior {
         guard let result = target.target as? LTTargetType, result.model.isStub else {
             return .never
         }
@@ -65,7 +65,7 @@ public class LTNetwokManager: NSObject {
     /**
      创建request
      */
-    public class func createRequest(_ endpoint: Endpoint, closure: MoyaProvider<MultiTarget>.RequestResultClosure) {
+    open class func createRequest(_ endpoint: Endpoint, closure: MoyaProvider<MultiTarget>.RequestResultClosure) {
         do {
             let urlRequest = try endpoint.urlRequest()
             closure(.success(urlRequest))
@@ -81,7 +81,7 @@ public class LTNetwokManager: NSObject {
     /**
      创建Manager
      */
-    public class func createManager(_ target: LTTargetType) -> Manager {
+    open class func createManager(_ target: LTTargetType) -> Manager {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
         let manager = Manager(configuration: configuration)
@@ -93,7 +93,7 @@ public class LTNetwokManager: NSObject {
     /**
      创建插件
      */
-    public class func createPlugins(_ target: LTTargetType) -> [PluginType] {
+    open class func createPlugins(_ target: LTTargetType) -> [PluginType] {
         return target.model.plugins
     }
 
@@ -103,7 +103,7 @@ public class LTNetwokManager: NSObject {
     /**
      progress回调
      */
-    public class func perform(_ response: ProgressResponse, target: LTTarget?) {
+    open class func perform(_ response: ProgressResponse, target: LTTarget?) {
         guard let target = target else {
             return
         }
@@ -116,7 +116,7 @@ public class LTNetwokManager: NSObject {
     /**
      complete回调
      */
-    public class func perform(_ result: Result<Moya.Response, MoyaError>, target: LTTarget?) {
+    open class func perform(_ result: Result<Moya.Response, MoyaError>, target: LTTarget?) {
         guard let target = target else {
             return
         }
@@ -138,7 +138,7 @@ public class LTNetwokManager: NSObject {
     /**
      获取url
      */
-    public class func url(_ target: MultiTarget) -> String {
+    open class func url(_ target: MultiTarget) -> String {
         guard let result = target.target as? LTTargetType else {
             return ""
         }

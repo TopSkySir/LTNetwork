@@ -13,22 +13,22 @@ import Result
 public typealias LTProgress = (_ progress: ProgressResponse) -> Void
 public typealias LTCompletion = (_ result: Result<LTResponse, AnyError>) -> Void
 
-public class LTResponse: NSObject {
+open class LTResponse: NSObject {
 
     /**
      Moya 返回的Response
      */
-    public var response: Response
+    open var response: Response
 
     /**
      附加冗余字段
      */
-    public var object: Any?
+    open var object: Any?
 
     /**
      附加冗余字段
      */
-    public var userInfo: Any?
+    open var userInfo: Any?
 
 
     public required init(_ response: Response) {

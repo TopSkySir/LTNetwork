@@ -9,14 +9,14 @@
 import UIKit
 import Alamofire
 
-public class LTAdapter: RequestAdapter {
+open class LTAdapter: RequestAdapter {
 
     /**
      超时时间
      */
-    public var timeoutInterval: TimeInterval = 30
+    open var timeoutInterval: TimeInterval = 30
 
-    public func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+    open func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         var req = urlRequest
         req.timeoutInterval = timeoutInterval
         return req

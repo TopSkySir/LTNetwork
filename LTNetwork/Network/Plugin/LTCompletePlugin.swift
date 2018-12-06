@@ -10,16 +10,16 @@ import UIKit
 import Moya
 import Result
 
-public class LTCompletePlugin: LTPluginType {
+open class LTCompletePlugin: LTPluginType {
 
-    public func progress(_ response: ProgressResponse, target: LTTargetType) {
+    open func progress(_ response: ProgressResponse, target: LTTargetType) {
         guard let progress = target.model.progressClosure else {
             return
         }
         progress(response)
     }
 
-    public func complete(_ result: Result<LTResponse, AnyError>, target: LTTargetType) -> Result<LTResponse, AnyError> {
+    open func complete(_ result: Result<LTResponse, AnyError>, target: LTTargetType) -> Result<LTResponse, AnyError> {
         guard let complete = target.model.completeClosure else {
             return result
         }

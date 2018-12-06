@@ -53,24 +53,24 @@ open class LTTargetModel: NSObject {
     /**
      参数
      */
-    public var params: [String: Any]?
+    open var params: [String: Any]?
 
     /**
      默认参数， 基类可配置此选项
      */
-    public var defaultParams: [String: Any]? {
+    open var defaultParams: [String: Any]? {
         return nil
     }
 
     /**
      参数编码格式
      */
-    public var paramsEncodeing: ParameterEncoding = URLEncoding.default
+    open var paramsEncodeing: ParameterEncoding = URLEncoding.default
 
     /**
      任务类型
      */
-    public var task: Task {
+    open var task: Task {
         guard let result = allParams(), !result.isEmpty else {
             return .requestPlain
         }
@@ -80,14 +80,14 @@ open class LTTargetModel: NSObject {
     /**
      插件
      */
-    public var plugins: [LTPluginType] {
+    open var plugins: [LTPluginType] {
         return [LTParsePlugin(), LTCompletePlugin()]
     }
 
     /**
      适配器
      */
-    public var adapter: RequestAdapter{
+    open var adapter: RequestAdapter{
         let adapter = LTAdapter()
         adapter.timeoutInterval = timeoutInterval
         return adapter
@@ -97,37 +97,37 @@ open class LTTargetModel: NSObject {
     /**
      超时时间
      */
-    public var timeoutInterval: TimeInterval = 30
+    open var timeoutInterval: TimeInterval = 30
 
     /**
      是否跟踪重复的网络请求
      */
-    public var trackInflights: Bool = false
+    open var trackInflights: Bool = false
 
     /**
      样本模拟数据 
      */
-    public var sampleData: Data?
+    open var sampleData: Data?
 
     /**
      是否执行模拟数据
      */
-    public var isStub: Bool = false
+    open var isStub: Bool = false
 
     /**
      model转换
      */
-    public var codableType: LTCodable.Type?
+    open var codableType: LTCodable.Type?
 
     /**
      进度回调
      */
-    public var progressClosure: LTProgress?
+    open var progressClosure: LTProgress?
 
     /**
      完成回调
      */
-    public var completeClosure: LTCompletion?
+    open var completeClosure: LTCompletion?
 
 }
 

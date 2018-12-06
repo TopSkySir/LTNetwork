@@ -10,9 +10,9 @@ import UIKit
 import Moya
 import Result
 
-public class LTParsePlugin: LTPluginType {
+open class LTParsePlugin: LTPluginType {
 
-    public func complete(_ result: Result<LTResponse, AnyError>, target: LTTargetType) -> Result<LTResponse, AnyError> {
+    open func complete(_ result: Result<LTResponse, AnyError>, target: LTTargetType) -> Result<LTResponse, AnyError> {
         switch result {
         case .success(let response):
             let data = response.response.data
@@ -29,7 +29,7 @@ public class LTParsePlugin: LTPluginType {
 
     // MARK: - 解析
 
-    public func parse(_ data: Data?) -> [String: Any]? {
+    open func parse(_ data: Data?) -> [String: Any]? {
         guard let resultData = data else {
             return nil
         }

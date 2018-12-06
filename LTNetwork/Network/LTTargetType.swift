@@ -14,35 +14,35 @@ public protocol LTTargetType: TargetType {
     init(_ model: LTTargetModel)
 }
 
-public class LTTarget: LTTargetType {
+open class LTTarget: LTTargetType {
 
-    public var model: LTTargetModel
+    open var model: LTTargetModel
 
-    public var baseURL: URL {
+    open var baseURL: URL {
         return URL(string: model.baseURL)!
     }
 
-    public var path: String {
+    open var path: String {
         return model.api
     }
 
-    public var method: Moya.Method {
+    open var method: Moya.Method {
         return model.method
     }
 
-    public var sampleData: Data {
+    open var sampleData: Data {
         return model.sampleData ?? "".data(using: String.Encoding.utf8)!
     }
 
-    public var task: Task {
+    open var task: Task {
         return model.task
     }
 
-    public var headers: [String : String]? {
+    open var headers: [String : String]? {
         return model.allHeaders()
     }
 
-    public var validationType: ValidationType {
+    open var validationType: ValidationType {
         return .none
     }
 

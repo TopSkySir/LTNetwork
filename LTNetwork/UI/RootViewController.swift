@@ -65,7 +65,7 @@ class RootViewController: BaseTableViewController {
             model.sampleData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
             model.isStub = false
             model.timeoutInterval = 2
-            model.codableType = A.self
+//            model.codableType = A.self
             model.completeClosure = { result in
                 switch result {
                 case .success(let response):
