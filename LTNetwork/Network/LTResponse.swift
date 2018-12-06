@@ -8,6 +8,10 @@
 
 import UIKit
 import Moya
+import Result
+
+public typealias LTProgress = (_ progress: ProgressResponse) -> Void
+public typealias LTCompletion = (_ result: Result<LTResponse, AnyError>) -> Void
 
 public class LTResponse: NSObject {
 

@@ -12,7 +12,7 @@ import Result
 
 public protocol LTPluginType: PluginType {
 
-    func progress(_ response: ProgressResponse)
+    func progress(_ response: ProgressResponse, target: LTTargetType)
 
     func complete(_ result: Result<LTResponse, AnyError>, target: LTTargetType) -> Result<LTResponse, AnyError>
 
@@ -20,7 +20,7 @@ public protocol LTPluginType: PluginType {
 
 public extension LTPluginType {
 
-    func progress(_ response: ProgressResponse) {
+    func progress(_ response: ProgressResponse, target: LTTargetType) {
         return
     }
 

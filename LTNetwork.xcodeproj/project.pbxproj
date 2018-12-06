@@ -10,7 +10,8 @@
 		102F5AAA5E2F35A1B93A6F49 /* Pods_LTNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD166D9C4C9B2AB7704E142A /* Pods_LTNetwork.framework */; };
 		32F53261B3F8C5C6381D5C41 /* Pods_LTNetworkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0488B5137B45A01CC5D28BB8 /* Pods_LTNetworkUITests.framework */; };
 		4CBE6DAE678B42C586F3831F /* Pods_LTNetworkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0F882F2F65E481B6099D38 /* Pods_LTNetworkTests.framework */; };
-		A603839821B7A4BA00AD5C34 /* LTTestPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A603839721B7A4BA00AD5C34 /* LTTestPlugin.swift */; };
+		A603763D21B8CAF1005B624B /* LTCompletePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A603763C21B8CAF1005B624B /* LTCompletePlugin.swift */; };
+		A603764121B9165B005B624B /* LTDownloadTargetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A603764021B9165A005B624B /* LTDownloadTargetModel.swift */; };
 		A603839A21B7AB8F00AD5C34 /* LTAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A603839921B7AB8F00AD5C34 /* LTAdapter.swift */; };
 		A603839D21B7DB4500AD5C34 /* LTCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A603839C21B7DB4500AD5C34 /* LTCodable.swift */; };
 		A607634221B679620098C013 /* LTPluginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607634121B679620098C013 /* LTPluginType.swift */; };
@@ -54,7 +55,8 @@
 		5152F8D7D3B6E9DFAF4A5EBE /* Pods-LTNetworkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTNetworkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LTNetworkUITests/Pods-LTNetworkUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7C83CF779897FA5E9F952CDC /* Pods-LTNetworkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTNetworkUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LTNetworkUITests/Pods-LTNetworkUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A21EC17A97F61BA681E6A064 /* Pods-LTNetworkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTNetworkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LTNetworkTests/Pods-LTNetworkTests.release.xcconfig"; sourceTree = "<group>"; };
-		A603839721B7A4BA00AD5C34 /* LTTestPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTTestPlugin.swift; sourceTree = "<group>"; };
+		A603763C21B8CAF1005B624B /* LTCompletePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTCompletePlugin.swift; sourceTree = "<group>"; };
+		A603764021B9165A005B624B /* LTDownloadTargetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDownloadTargetModel.swift; sourceTree = "<group>"; };
 		A603839921B7AB8F00AD5C34 /* LTAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTAdapter.swift; sourceTree = "<group>"; };
 		A603839C21B7DB4500AD5C34 /* LTCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTCodable.swift; sourceTree = "<group>"; };
 		A607634121B679620098C013 /* LTPluginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTPluginType.swift; sourceTree = "<group>"; };
@@ -124,11 +126,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A603764221B916D3005B624B /* TargetModel */ = {
+			isa = PBXGroup;
+			children = (
+				A640CF8221B4CFEB00FB2837 /* LTTargetModel.swift */,
+				A603764021B9165A005B624B /* LTDownloadTargetModel.swift */,
+			);
+			path = TargetModel;
+			sourceTree = "<group>";
+		};
 		A607634521B6897A0098C013 /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
 				A607634621B68A120098C013 /* LTParsePlugin.swift */,
-				A603839721B7A4BA00AD5C34 /* LTTestPlugin.swift */,
+				A603763C21B8CAF1005B624B /* LTCompletePlugin.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -200,8 +211,8 @@
 		A6BFD7E421B1238F0048FCDC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A603764221B916D3005B624B /* TargetModel */,
 				A607634521B6897A0098C013 /* Plugin */,
-				A640CF8221B4CFEB00FB2837 /* LTTargetModel.swift */,
 				A640CF8421B4DB3200FB2837 /* LTTargetType.swift */,
 				A640CF8621B5047500FB2837 /* LTNetwokManager.swift */,
 				A607634121B679620098C013 /* LTPluginType.swift */,
@@ -441,10 +452,11 @@
 				A6BFD7E121B123830048FCDC /* BaseTableViewController.swift in Sources */,
 				A607634421B67F990098C013 /* LTResponse.swift in Sources */,
 				A6BFD7B421B1230A0048FCDC /* ViewController.swift in Sources */,
+				A603764121B9165B005B624B /* LTDownloadTargetModel.swift in Sources */,
 				A603839D21B7DB4500AD5C34 /* LTCodable.swift in Sources */,
+				A603763D21B8CAF1005B624B /* LTCompletePlugin.swift in Sources */,
 				A640CF8521B4DB3200FB2837 /* LTTargetType.swift in Sources */,
 				A640CF8321B4CFEB00FB2837 /* LTTargetModel.swift in Sources */,
-				A603839821B7A4BA00AD5C34 /* LTTestPlugin.swift in Sources */,
 				A640CF8721B5047500FB2837 /* LTNetwokManager.swift in Sources */,
 				A603839A21B7AB8F00AD5C34 /* LTAdapter.swift in Sources */,
 				A6BFD7E321B123890048FCDC /* RootViewController.swift in Sources */,

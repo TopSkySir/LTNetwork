@@ -44,7 +44,9 @@ public class LTTargetModel: NSObject {
     /**
      默认头部参数， 基类可配置此选项
      */
-    public var defaultHeaders: [String: String]?
+    public var defaultHeaders: [String: String]? {
+        return nil
+    }
 
     /**
      参数
@@ -54,7 +56,9 @@ public class LTTargetModel: NSObject {
     /**
      默认参数， 基类可配置此选项
      */
-    public var defaultParams: [String: Any]?
+    public var defaultParams: [String: Any]? {
+        return nil
+    }
 
     /**
      参数编码格式
@@ -74,38 +78,54 @@ public class LTTargetModel: NSObject {
     /**
      插件
      */
-    public var plugins: [LTPluginType] = [LTParsePlugin(), LTTestPlugin()]
+    public var plugins: [LTPluginType] = [LTParsePlugin(), LTCompletePlugin()]
 
 
     /**
      适配器
      */
-    public lazy var adapter: RequestAdapter = {
+    public var adapter: RequestAdapter{
         let adapter = LTAdapter()
         adapter.timeoutInterval = timeoutInterval
         return adapter
-    }()
+    }
 
 
     /**
      超时时间
      */
-    var timeoutInterval: TimeInterval = 5
+    public var timeoutInterval: TimeInterval = 30
 
     /**
      是否跟踪重复的网络请求
      */
-    var trackInflights: Bool = false
+    public var trackInflights: Bool = false
 
     /**
      样本模拟数据 
      */
-    var sampleData: Data?
+    public var sampleData: Data?
 
     /**
-     是否走模拟数据
+     是否执行模拟数据
      */
-    var isStub: Bool = false
+    public var isStub: Bool = false
+
+    /**
+     model转换
+     */
+    public var codableType: LTCodable.Type?
+
+    /**
+     进度回调
+     */
+    public var progressClosure: LTProgress?
+
+    /**
+     完成回调
+     */
+    public var completeClosure: LTCompletion?
+
 }
 
 public extension LTTargetModel {

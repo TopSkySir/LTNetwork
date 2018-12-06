@@ -13,13 +13,13 @@ import Result
 public class LTNetwokManager: NSObject {
 
     @discardableResult
-    class func request(_ model: LTTargetModel) -> Cancellable? {
+    public class func request(_ model: LTTargetModel) -> Cancellable? {
         let target = LTTarget(model)
         return request(target)
     }
 
     @discardableResult
-    class func request(_ target: LTTarget) -> Cancellable? {
+    public class func request(_ target: LTTarget) -> Cancellable? {
         let provider = createProvider(target)
         let resultTarget = MultiTarget(target)
         return provider.request(resultTarget, callbackQueue: DispatchQueue.global(), progress: { [weak target] (response) in
@@ -32,7 +32,7 @@ public class LTNetwokManager: NSObject {
 
     // MARK: - 创建Provider
 
-    class func createProvider(_ target: LTTargetType) -> MoyaProvider<MultiTarget> {
+    public class func createProvider(_ target: LTTargetType) -> MoyaProvider<MultiTarget> {
         return MoyaProvider<MultiTarget>(endpointClosure: createEndpoint,
                                                  requestClosure: createRequest,
                                                  stubClosure: createStub,
@@ -81,7 +81,7 @@ public class LTNetwokManager: NSObject {
     /**
      创建Manager
      */
-    class func createManager(_ target: LTTargetType) -> Manager {
+    public class func createManager(_ target: LTTargetType) -> Manager {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
         let manager = Manager(configuration: configuration)
@@ -103,12 +103,12 @@ public class LTNetwokManager: NSObject {
     /**
      progress回调
      */
-    class func perform(_ response: ProgressResponse, target: LTTarget?) {
+    public class func perform(_ response: ProgressResponse, target: LTTarget?) {
         guard let target = target else {
             return
         }
         target.model.plugins.forEach({ (item) in
-            item.progress(response)
+            item.progress(response, target: target)
         })
     }
 
@@ -116,7 +116,7 @@ public class LTNetwokManager: NSObject {
     /**
      complete回调
      */
-    class func perform(_ result: Result<Moya.Response, MoyaError>, target: LTTarget?) {
+    public class func perform(_ result: Result<Moya.Response, MoyaError>, target: LTTarget?) {
         guard let target = target else {
             return
         }

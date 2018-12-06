@@ -12,14 +12,15 @@ import Result
 
 public class LTParsePlugin: LTPluginType {
 
-    deinit {
-        print("LTParsePlugin  deinit")
-    }
-
     public func complete(_ result: Result<LTResponse, AnyError>, target: LTTargetType) -> Result<LTResponse, AnyError> {
         switch result {
         case .success(let response):
-            response.object = parse(response.response.data)
+            let data = response.response.data
+            guard let codableType = target.model.codableType else {
+                response.object = parse(data)
+                break
+            }
+            response.object = codableType.decoder(data)
         default:
             break
         }
@@ -27,7 +28,7 @@ public class LTParsePlugin: LTPluginType {
     }
 
     // MARK: - 解析
-    
+
     public func parse(_ data: Data?) -> [String: Any]? {
         guard let resultData = data else {
             return nil
