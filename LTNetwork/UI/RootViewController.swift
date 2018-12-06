@@ -29,7 +29,6 @@ class B: Codable {
 
 }
 
-
 class RootViewController: BaseTableViewController {
 
     override func viewDidLoad() {
@@ -56,7 +55,7 @@ class RootViewController: BaseTableViewController {
             let dict: [String: Any] = ["name": "A", "address":[["name": "b1"],["name": "b2"]], "item": ["name": "b2"], "item3": ["name": "b3"]]
 
             let model = LTTargetModel()
-            model.api = "api/2/news/latest"
+            model.interface = "http://news-at.zhihu.com/api/2/news/latest"
             model.method = .get
 //            model.defaultHeaders = ["A": "1"]
             model.headers = ["B": "2"
@@ -66,7 +65,7 @@ class RootViewController: BaseTableViewController {
             model.sampleData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
             model.isStub = false
             model.timeoutInterval = 2
-//            model.codableType = A.self
+            model.codableType = A.self
             model.completeClosure = { result in
                 switch result {
                 case .success(let response):
