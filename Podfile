@@ -9,7 +9,7 @@ target 'LTNetwork' do
   # Pods for LTNetwork
 
   pod 'LTExtension'
-  pod 'Moya'
+  pod 'Moya', '12.0.1'
 
   target 'LTNetworkTests' do
     inherit! :search_paths

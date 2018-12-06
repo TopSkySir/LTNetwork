@@ -14,7 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - LTExtension
-  - Moya
+  - Moya (= 12.0.1)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -29,6 +29,6 @@ SPEC CHECKSUMS:
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
 
-PODFILE CHECKSUM: cc18405ce99ee06283cfd31267f42106de9b6399
+PODFILE CHECKSUM: 03d57933d849900414141cf367883bd2056ad413
 
 COCOAPODS: 1.5.0

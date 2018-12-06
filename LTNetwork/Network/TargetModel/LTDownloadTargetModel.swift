@@ -9,22 +9,22 @@
 import UIKit
 import Alamofire
 
-class LTDownloadTargetModel: LTTargetModel {
+public class LTDownloadTargetModel: LTTargetModel {
 
     /**
      文件夹
      */
-    var directory: FileManager.SearchPathDirectory = .documentDirectory
+    public var directory: FileManager.SearchPathDirectory = .documentDirectory
 
     /**
      权限
      */
-    var domain: FileManager.SearchPathDomainMask = .userDomainMask
+    public var domain: FileManager.SearchPathDomainMask = .userDomainMask
 
     /**
      文件名称
      */
-    var fileName: String?
+    public var fileName: String?
 
 
     override var defaultHeaders: [String : String]? {
