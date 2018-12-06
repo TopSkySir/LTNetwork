@@ -19,7 +19,7 @@ public class LTTarget: LTTargetType {
     public var model: LTTargetModel
 
     public var baseURL: URL {
-        return URL(string: "")!
+        return URL(string: model.baseURL)!
     }
 
     public var path: String {

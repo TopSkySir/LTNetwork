@@ -24,7 +24,9 @@ public class LTTargetModel: NSObject {
     /**
      接口基路径
      */
-    public var baseURL: String = ""
+    public var baseURL: String {
+        return "http://news-at.zhihu.com"
+    }
 
     /**
      api路径
