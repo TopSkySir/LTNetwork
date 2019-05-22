@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "LTNetwork"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "A easy network with swift"
 
   s.description  = <<-DESC
@@ -24,7 +24,11 @@ Pod::Spec.new do |s|
 
 
   s.author             = { "TopSkySir" => "TopSkyComeOn@163.com" }
-  s.platform     = :ios, '8.0'
+
+  s.ios.deployment_target = '8.0'
+  s.osx.deployment_target = '10.10'
+  s.tvos.deployment_target = '9.0'
+  s.watchos.deployment_target = '3.0'
 
   s.source       = { :git => "https://github.com/TopSkySir/LTNetwork.git", :tag => "#{s.version}" }
   s.swift_version = "4.2"

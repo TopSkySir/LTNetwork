@@ -6,7 +6,7 @@
 //  Copyright © 2018 TopSky. All rights reserved.
 //
 
-import UIKit
+
 import Moya
 import Result
 

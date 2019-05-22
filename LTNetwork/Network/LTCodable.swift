@@ -6,7 +6,12 @@
 //  Copyright © 2018 TopSky. All rights reserved.
 //
 
+#if os(iOS) || os(watchOS) || os(tvOS)
 import UIKit
+#elseif os(macOS)
+import Cocoa
+#endif
+
 
 public protocol LTCodable: Codable {
     static func decoder(_ data: Data?) -> Self?
